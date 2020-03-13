@@ -2,7 +2,7 @@
 class KsFormLocators {
     
     get element1(){
-        return 'div.control-well'
+        return 'div.control-well>input'
     }
 
     get element2(){
