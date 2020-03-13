@@ -12,20 +12,18 @@ const formElements= new KsFormLocators()
 
 class KscalculatorForm{
     
-    fillKsForm(testdata){
-        cy.log('testdata', testdata);
-        
+    fillKsForm(testdata){      
         cy.frameLoaded(ksCalPage.iframeElement)
         cy.enter(ksCalPage.iframeElement).then(getBody => {    
-        cy.log('typeof testdata.age', typeof testdata.age);
-        getBody().find(ksCalPage.currentAge).find(formElements.element1).clear().type(testdata.age) 
-
-        getBody().find(ksCalPage.employmentStatus).find(formElements.element1).click() 
+        cy.wait(100)
+        getBody().find(ksCalPage.currentAge).find(formElements.txtInputElement).clear().type(testdata.age) 
+        cy.wait(100)
+        getBody().find(ksCalPage.employmentStatus).find(formElements.dropdownElement).click() 
         getBody().find(formElements.element2).contains(testdata.employment_status).click() 
-
+        cy.wait(100)
         if ((testdata.employment_status) == 'Employed') {
-            getBody().find(ksCalPage.annualSalary).find(formElements.element1).type(testdata.annual_wages) 
-
+            getBody().find(ksCalPage.annualSalary).find(formElements.txtInputElement).clear().type(testdata.annual_wages) 
+            cy.wait(100)
             if (testdata.ks_contribution == '3%') {
                 getBody().find(formElements.ksContribution3percent).check() 
             } else if (testdata.ks_contribution == '4%') {
@@ -41,13 +39,17 @@ class KscalculatorForm{
                 getBody().find(formElements.ksContribution10percent).check() 
             }
         } 
-        else {       
-            getBody().find(ksCalPage.pir).find(formElements.element1).click() 
-            getBody().find(formElements.element2).contains(testdata.pir).click() 
-            getBody().find(ksCalPage.kiwisaverBalance).find(formElements.element1).clear().type(testdata.ks_balance)
-            getBody().find(ksCalPage.volContributions).find(formElements.volContriTxtInput).clear().type(testdata.vol_contribution)
-            getBody().find(ksCalPage.volContributions).find(formElements.volContridrpdwn).click()
-            getBody().find(formElements.element2).contains(testdata.vol_contribution_frequency).click()
+        cy.wait(100)
+        getBody().find(ksCalPage.pir).find(formElements.dropdownElement).click() 
+        getBody().find(formElements.element2).contains(testdata.pir).click() 
+        cy.wait(100)
+        getBody().find(ksCalPage.kiwisaverBalance).find(formElements.txtInputElement).clear().type(testdata.ks_balance)
+        cy.wait(100)
+        getBody().find(ksCalPage.volContributions).find(formElements.txtInputElement).clear().type(testdata.vol_contribution)
+        cy.wait(100)
+        getBody().find(ksCalPage.volContributions).find(formElements.volContridrpdwn).click()
+        getBody().find(formElements.element2).contains(testdata.vol_contribution_frequency).click()
+        cy.wait(100)
             if (testdata.risk_profile == 'Low') {
                 getBody().find(formElements.lowRiskProfile).check() 
             } 
@@ -57,11 +59,12 @@ class KscalculatorForm{
             else if (testdata.risk_profile == 'High') {
                 getBody().find(formElements.highRiskProfile).check() 
             } 
-            getBody().find(ksCalPage.savingGoalAtRetirement).find(formElements.element1).type(testdata.saving_goal)
-            cy.wait(100)
-            getBody().find(formElements.submitBtn).contains(formElements.submitBtnText).click()   
-            getBody().find(formElements.resultHeadingText).should("be.visible")
-        }
+        cy.wait(100)
+        getBody().find(ksCalPage.savingGoalAtRetirement).find(formElements.txtInputElement).clear().type(testdata.saving_goal)
+        cy.wait(100)
+        getBody().find(formElements.submitBtn).contains(formElements.submitBtnText).click()   
+        getBody().find(formElements.resultHeadingText).should("be.visible")
+    
     })
 }
 

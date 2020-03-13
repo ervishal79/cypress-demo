@@ -1,24 +1,16 @@
 
 class KsFormLocators {
     
-    get element1(){
+    get txtInputElement(){
         return 'div.control-well>input'
+    }
+
+    get dropdownElement(){
+        return 'div.control-well'
     }
 
     get element2(){
         return 'div.label'
-    }
- 
-    get employementStatus1(){
-        return 'Employed'
-    }
-
-    get employementStatus2(){
-        return 'Self-employed'
-    }
-
-    get employementStatus3(){
-        return 'Not employed'
     }
 
     get lowRiskProfile(){
@@ -53,44 +45,12 @@ class KsFormLocators {
         return '#radio-option-06N'
     }
 
-    get pirOption1(){
-        return '10.5%'
-    }
-
-    get pirOption2(){
-        return '17.5%'
-    }
-
-    get pirOption3(){
-        return '28%'
-    }
-
     get volContriTxtInput(){
         return 'div.control-well>input'
     }
 
     get volContridrpdwn(){
         return 'div.control-well>div.well-value'
-    }
-
-    get frequency1(){
-        return 'one-off'
-    }
-
-    get frequency2(){
-        return 'Weekly'
-    }
-
-    get frequency3(){
-        return 'Fortnightly'
-    }
-
-    get frequency4(){
-        return 'Monthly'
-    }
-
-    get frequency5(){
-        return 'Annually'
     }
 
     get submitBtn(){
