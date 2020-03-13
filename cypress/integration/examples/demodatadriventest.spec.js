@@ -19,12 +19,13 @@ const formElements= new KsFormLocators()
 describe ('First Demo Testsuite', () => {
 
     beforeEach ('launch the website', () =>{
-        // cy.visit('https://www.westpac.co.nz/kiwisaver/calculators/kiwisaver-calculator/')
         cy.visit('https://westpac.co.nz')
         homepage.logo.should('be.visible')
         homepage.ksField.should('be.visible').trigger('mouseover')
         homepage.ksCalBtn.should('be.visible').click()
         homepage.startHereBtn.should('be.visible').click()
+        // To run on Windows comment out above code and use the below url
+        // cy.visit('https://www.westpac.co.nz/kiwisaver/calculators/kiwisaver-calculator/')
     })
 
     it('Valitdate Info Icon messages on KiwiSaver Retirement Calculator Page', () => {
@@ -51,6 +52,7 @@ describe ('First Demo Testsuite', () => {
 
         cy.wrap(formdata).each(data => {
             form.fillKsForm(data)
+            cy.reload()
         });
                 
     })
