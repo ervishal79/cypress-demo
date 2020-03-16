@@ -19,7 +19,7 @@ const formElements= new KsFormLocators()
 describe ('First Demo Testsuite', () => {
 
     beforeEach ('launch the website', () =>{
-        cy.visit('https://westpac.co.nz')
+        cy.visit('/')
         homepage.logo.should('be.visible')
         homepage.ksField.should('be.visible').trigger('mouseover')
         homepage.ksCalBtn.should('be.visible').click()
