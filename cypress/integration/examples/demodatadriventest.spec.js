@@ -22,7 +22,7 @@ describe ('First Demo Testsuite', () => {
         form.navigateToKsForm()
     })
 
-    it.only('Valitdate Info Icon messages on KiwiSaver Retirement Calculator Page', () => {
+    it('Valitdate Info Icon messages on KiwiSaver Retirement Calculator Page', () => {
         form.validateInfoIconMessages()
     })
 
