@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
 import 'cypress-iframe'
 
-import HomePage from '../locators/home-page-locators'
+import HomePage from '../../locators/home-page-locators'
 const homepage = new HomePage()
 
 import formdata from './ks-form-data'
 
-import KsCalculatorPage from '../locators/ks-calculator-screen-locators'
+import KsCalculatorPage from '../../locators/ks-calculator-screen-locators'
 const ksCalPage = new KsCalculatorPage()
 
-import KscalculatorForm from './kiwisaverCalculatorForm'
+import KscalculatorForm from '../kiwisaverCalculatorForm'
 const form = new KscalculatorForm()
 
-import KsFormLocators from '../locators/kiwisaver-form-locators'
+import KsFormLocators from '../../locators/kiwisaver-form-locators'
 const formElements= new KsFormLocators()
 
 
