@@ -1,5 +1,4 @@
 import 'cypress-iframe'
-import info_texts from "../testData/infoMsgs"
 
 export const navigateToKsCalculator = () => {
     cy.visit("kiwisaver/calculators/");
@@ -10,22 +9,19 @@ export const navigateToKsCalculator = () => {
 }
 
 export const validateInfoMsg = (msgs) => {
-    cy.frameLoaded("#calculator-embed > iframe")
+    cy.frameLoaded("#calculator-embed > iframe").should("be.visible");
     cy.enter("#calculator-embed > iframe").then(getBody => {
-        getBody().find("[label=Current age]").find("i.icon").first().click()
-        getBody().find('p').contains(ksCalPage.currentAgeMsg).should('be.visible')
-
-
-        getBody().find(ksCalPage.employmentStatus).find(ksCalPage.infoIcon).first().click()
-        getBody().find('p').contains(ksCalPage.employmentStatusMsg).should('be.visible')
-        getBody().find(ksCalPage.pir).find(ksCalPage.infoIcon).first().click()
-        getBody().find('p').contains(ksCalPage.pirMsg).should('be.visible')
-        getBody().find(ksCalPage.kiwisaverBalance).find(ksCalPage.infoIcon).first().click()
-        getBody().find('p').contains(ksCalPage.kiwisaverBalanceMsg).should('be.visible')
-        getBody().find(ksCalPage.volContributions).find(ksCalPage.infoIcon).first().click()
-        getBody().find('p').contains(ksCalPage.volContributionsMsg).should('be.visible')
-        getBody().find(ksCalPage.riskProfile).find(ksCalPage.infoIcon).first().click()          
-        getBody().find(ksCalPage.savingGoalAtRetirement).find(ksCalPage.infoIcon).first().click()
-        getBody().find('p').contains(ksCalPage.savingGoalAtRetirementMsg).should('be.visible')
+        getBody().find("div[help-id=CurrentAge]").find("i.icon").should("be.visible").click();
+        getBody().find("p").contains("age limit").should("have.text", msgs.current_age);
+        getBody().find("div[help-id=EmploymentStatus]").find("i.icon").click();
+        getBody().find('p').contains("3%").should("have.text", msgs.emp_status);
+        getBody().find("div[help-id=KiwiSaverBalance]").find("i.icon").click();
+        getBody().find('p').contains("leave this field blank").should("have.text", msgs.current_ks_balance);
+        getBody().find("div[help-id=VoluntaryContributions]").find("i.icon").click();
+        getBody().find('p').contains("'Self-Employed' or 'Not employed'").should("have.text", msgs.vol_contribution);
+        getBody().find("div[help-id=RiskProfile]").find("i.icon").click();
+        getBody().find('p').contains(msgs.risk_profile).should("be.visible");
+        getBody().find("div[help-id=SavingsGoal]").find("i.icon").click();
+        getBody().find('p').contains(msgs.saving_goal).should("be.visible");
     })
 }
