@@ -26,7 +26,6 @@
   },
   "lint-staged": {
     "*.json": [
-
       "git add"
     ],
     "*.js": "eslint --cache --fix"
