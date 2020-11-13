@@ -1,5 +1,5 @@
 import "cypress-iframe";
-import locators from "../locators/elementIds"
+import locators from "../locators/elementIds";
 
 export const navigateToKsCalculator = () => {
   cy.visit("kiwisaver/calculators/");
@@ -152,9 +152,9 @@ export const fillForm = data => {
     getBody()
       .find(locators.submitBtn)
       .contains(locators.submitBtnText)
-      .click()
+      .click();
     getBody()
       .find(locators.resultHeadingText)
-      .should("be.visible")
+      .should("be.visible");
   });
 };
