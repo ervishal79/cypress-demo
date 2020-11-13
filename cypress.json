@@ -1,6 +1,48 @@
 {
-    "baseUrl": "https://westpac.co.nz",
-    "viewportWidth": 1800,
-    "viewportHeight": 900
-  }
-  
+  "animationDistanceThreshold": 5,
+  "baseUrl": "https://westpac.co.nz",
+  "blockHosts": null,
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 4000,
+  "env": {},
+  "execTimeout": 60000,
+  "fileServerFolder": "",
+  "fixturesFolder": "cypress/fixtures",
+  "hosts": null,
+  "ignoreTestFiles": "*.hot-update.js'",
+  "integrationFolder": "cypress/integration",
+  "modifyObstructiveCode": true,
+  "nodeVersion": "default",
+  "numTestsKeptInMemory": 50,
+  "pageLoadTimeout": 60000,
+  "pluginsFile": "cypress/plugins",
+  "port": null,
+  "projectId": null,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mocha",
+      "quite": true,
+      "overwrite": false,
+      "html": false,
+      "json": true
+    }
+  },
+  "requestTimeout": 5000,
+  "responseTimeout": 30000,
+  "screenshotsFolder": "cypress/screenshots",
+  "supportFile": "cypress/support",
+  "taskTimeout": 60000,
+  "testFiles": "*/*.*",
+  "trashAssetsBeforeRuns": true,
+  "userAgent": null,
+  "video": false,
+  "videoCompression": 32,
+  "videoUploadOnPasses": true,
+  "videosFolder": "cypress/videos",
+  "viewportHeight": 1350,
+  "viewportWidth": 1816,
+  "waitForAnimations": true,
+  "watchForFileChanges": true
+}
