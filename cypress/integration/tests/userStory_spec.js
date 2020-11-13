@@ -1,23 +1,22 @@
-import info_text from "../testData/infoMsgs"
-const { navigateToKsCalculator, validateInfoMsg } = require("../utils/calculator");
+import infoText from "../testData/infoMsgs";
+import formData from "../testData/formTestData";
+
+const { navigateToKsCalculator, validateInfoMsg, fillForm } = require("../utils/calculator");
 
 describe("Run Calculator Test Scenarios ", () => {
-    beforeEach("Load the page before the entire tests runs", () => {
-        cy.visit("/");
-        navigateToKsCalculator();
-    })
+  beforeEach("Load the page before the entire tests runs", () => {
+    cy.visit("/");
+    navigateToKsCalculator();
+  });
 
-    it("TC01 : Check Info icon present on all the fields in Ks Ret Calculator", () => {
+  it("TC01 : Check Info icon present on all the fields in Ks Ret Calculator", () => {
+    validateInfoMsg(infoText);
+  });
 
-        validateInfoMsg(info_text);  
-    })
-
-    // it("TC02 : Users should able to calculate their projected KiwiSaver balance", () => {
-    //     navigateToKsCalculator();
-    //     validateInfoMsg(info_text);  
-    // })
-
-
-
-})
-
+  it("TC02 : Users should able to calculate their projected KiwiSaver balance", () => {
+    cy.wrap(formData).each(data => {
+      fillForm(data);
+      cy.reload();
+    });
+  });
+});

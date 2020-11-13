@@ -26,12 +26,12 @@ describe ('First Demo Testsuite', () => {
         form.validateInfoIconMessages()
     })
 
-    // it('Calculate Projected KiwiSaver Balance', () => {
+    it('Calculate Projected KiwiSaver Balance', () => {
 
-    //     cy.wrap(formdata).each(data => {
-    //         form.fillKsForm(data)
-    //         cy.reload()
-    //     });
+        cy.wrap(formdata).each(data => {
+            form.fillKsForm(data)
+            cy.reload()
+        });
                 
-    // })
+    })
 })
