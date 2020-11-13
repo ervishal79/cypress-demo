@@ -1,4 +1,5 @@
 import "cypress-iframe";
+import locators from "../locators/elementIds"
 
 export const navigateToKsCalculator = () => {
   cy.visit("kiwisaver/calculators/");
@@ -10,11 +11,11 @@ export const navigateToKsCalculator = () => {
 };
 
 export const validateInfoMsg = msgs => {
-  cy.frameLoaded("#calculator-embed > iframe").should("be.visible");
-  cy.enter("#calculator-embed > iframe").then(getBody => {
+  cy.frameLoaded(locators.iframeElement).should("be.visible");
+  cy.enter(locators.iframeElement).then(getBody => {
     getBody()
-      .find("div[help-id=CurrentAge]")
-      .find("i.icon")
+      .find(locators.currentAge)
+      .find(locators.infoIcon)
       .should("be.visible")
       .click();
     getBody()
@@ -22,40 +23,40 @@ export const validateInfoMsg = msgs => {
       .contains("age limit")
       .should("have.text", msgs.current_age);
     getBody()
-      .find("div[help-id=EmploymentStatus]")
-      .find("i.icon")
+      .find(locators.employmentStatus)
+      .find(locators.infoIcon)
       .click();
     getBody()
       .find("p")
       .contains("3%")
       .should("have.text", msgs.emp_status);
     getBody()
-      .find("div[help-id=KiwiSaverBalance]")
-      .find("i.icon")
+      .find(locators.kiwisaverBalance)
+      .find(locators.infoIcon)
       .click();
     getBody()
       .find("p")
       .contains("leave this field blank")
       .should("have.text", msgs.current_ks_balance);
     getBody()
-      .find("div[help-id=VoluntaryContributions]")
-      .find("i.icon")
+      .find(locators.volContributions)
+      .find(locators.infoIcon)
       .click();
     getBody()
       .find("p")
       .contains("'Self-Employed' or 'Not employed'")
       .should("have.text", msgs.vol_contribution);
     getBody()
-      .find("div[help-id=RiskProfile]")
-      .find("i.icon")
+      .find(locators.riskProfile)
+      .find(locators.infoIcon)
       .click();
     getBody()
       .find("p")
       .contains(msgs.risk_profile)
       .should("be.visible");
     getBody()
-      .find("div[help-id=SavingsGoal]")
-      .find("i.icon")
+      .find(locators.savingGoal)
+      .find(locators.infoIcon)
       .click();
     getBody()
       .find("p")
@@ -65,25 +66,25 @@ export const validateInfoMsg = msgs => {
 };
 
 export const fillForm = data => {
-  cy.frameLoaded("#calculator-embed > iframe").should("be.visible");
-  cy.enter("#calculator-embed > iframe").then(getBody => {
+  cy.frameLoaded(locators.iframeElement).should("be.visible");
+  cy.enter(locators.iframeElement).then(getBody => {
     getBody()
-      .find("div[help-id=CurrentAge]")
-      .find("div.control-well>input")
+      .find(locators.currentAge)
+      .find(locators.txtInputElement)
       .clear()
       .type(data.age);
     getBody()
-      .find("div[help-id=EmploymentStatus]")
-      .find("div.control-well")
+      .find(locators.employmentStatus)
+      .find(locators.dropDownElement)
       .click();
     getBody()
-      .find("div.label")
+      .find(locators.dropDownValueElement)
       .contains(data.employment_status)
       .click();
     if (data.employment_status === "Employed") {
       getBody()
-        .find("[help-id=AnnualIncome]")
-        .find("div.control-well>input")
+        .find(locators.annualSalary)
+        .find(locators.txtInputElement)
         .clear()
         .type(data.annual_wages);
       if (data.ks_contribution === "3%") {
@@ -92,35 +93,35 @@ export const fillForm = data => {
           .click();
       } else if (data.ks_contribution === "4%") {
         getBody()
-          .find(".radio-control[value=4]")
+          .find(locators.ksContribution3percent)
           .click();
       } else if (data.ks_contribution === "6%") {
         getBody()
-          .find(".radio-control[value=6]")
+          .find(locators.ksContribution4percent)
           .click();
       } else if (data.ks_contribution === "8%") {
         getBody()
-          .find(".radio-control[value=8]")
+          .find(locators.ksContribution6percent)
           .click();
       } else if (data.ks_contribution === "10%") {
         getBody()
-          .find(".radio-control[value=10]")
+          .find(locators.ksContribution10percent)
           .click();
       }
     }
     getBody()
-      .find(".wpnib-field-kiwi-saver-balance")
-      .find("div.control-well>input")
+      .find(locators.kiwisaverBalance)
+      .find(locators.txtInputElement)
       .clear()
       .type(data.ks_balance);
     getBody()
-      .find(".wpnib-field-voluntary-contributions")
-      .find("div.control-well>input")
+      .find(locators.volContributions)
+      .find(locators.txtInputElement)
       .clear()
       .type(data.ks_balance);
     getBody()
-      .find(".wpnib-field-voluntary-contributions")
-      .find("div.control-well>div.well-value")
+      .find(locators.volContributions)
+      .find(locators.volContridrpdwn)
       .click();
     getBody()
       .find("div.label")
@@ -148,7 +149,12 @@ export const fillForm = data => {
       .find("div.control-well>input")
       .clear()
       .type(data.saving_goal);
-    // getBody().find(formElements.submitBtn).contains(formElements.submitBtnText).click()
-    // getBody().find(formElements.resultHeadingText).should("be.visible")
+    getBody()
+      .find(locators.submitBtn)
+      .contains(locators.submitBtnText)
+      .click()
+    getBody()
+      .find(locators.resultHeadingText)
+      .should("be.visible")
   });
 };

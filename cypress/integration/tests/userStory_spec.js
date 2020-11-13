@@ -1,7 +1,7 @@
 import infoText from "../testData/infoMsgs";
 import formData from "../testData/formTestData";
 
-const { navigateToKsCalculator, validateInfoMsg, fillForm } = require("../utils/calculator");
+const { navigateToKsCalculator, validateInfoMsg, fillForm } = require("../utils/ksCalculator");
 
 describe("Run Calculator Test Scenarios ", () => {
   beforeEach("Load the page before the entire tests runs", () => {
