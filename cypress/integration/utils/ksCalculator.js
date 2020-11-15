@@ -124,29 +124,29 @@ export const fillForm = data => {
       .find(locators.volContridrpdwn)
       .click();
     getBody()
-      .find("div.label")
+      .find(locators.dropDownValueElement)
       .contains(data.vol_contribution_frequency)
       .click();
     if (data.risk_profile === "Defensive") {
       getBody()
-        .find("#radio-option-013")
+        .find(locators.defensiveRiskProfile)
         .click();
     } else if (data.risk_profile === "Conservative") {
       getBody()
-        .find("#radio-option-016")
+        .find(locators.conservativeRiskProfile)
         .click();
     } else if (data.risk_profile === "Balanced") {
       getBody()
-        .find("#radio-option-019")
+        .find(locators.balancedRiskProfile)
         .click();
     } else if (data.risk_profile === "Growth") {
       getBody()
-        .find("#radio-option-01C")
+        .find(locators.growthRishProfile)
         .click();
     }
     getBody()
-      .find(".wpnib-field-savings-goal")
-      .find("div.control-well>input")
+      .find(locators.savingGoal)
+      .find(locators.txtInputElement)
       .clear()
       .type(data.saving_goal);
     getBody()
