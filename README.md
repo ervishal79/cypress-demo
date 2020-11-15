@@ -24,45 +24,13 @@ OR
 
 _************************************************************************_ :
 
-_This cypress demo is integrated with mochawesome HTML reporter if it throws some error on reporter then Run following steps_ :
-`npm install --save-dev mocha cypress-multi-reporters mochawesome`
-`npm i --D mocha mochawesome mochawesome-merge mochawesome-report-generator`
-
-_Make sure following configs is there in cypress.json file_ :    
-`"reporter": "cypress-multi-reporters",`
-  `"reporterOptions": {`
-    `"reporterEnabled": "mochawesome",`
-    `"mochawesomeReporterOptions": {`
-      `"reportDir": "cypress/reports/mocha",`
-      `"quite": true,`
-      `"overwrite": false,`
-      `"html": false,`
-      `"json": true`
-   ` }`
- ` },`
-
-_Check following scripts are in package.json file for MAC and Linux_
-    `"clean:reports": "rm -rf cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports"`
-    `"pretest": "npm run clean:reports",`
-    `"tests": "npx cypress run --spec cypress/integration/tests/userStory_spec.js",`
-    `"merge:json-report": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",`
-    `"create:html-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",`
-    `"generate:html-report": "npm run merge:json-report && npm run create:html-report",`
-    `"cypress:tests": "npm run pretest && npm run tests && npm run generate:html-report"`
-
-_To RUN cypress tests with HTML reporter on MAC/LINUX_
+_This cypress demo is integrated with mochawesome HTML reporter To RUN cypress tests with HTML reporter on MAC/LINUX_
     `npm run cypress:tests`
 
 
 _************************************************************************_ :
-_In WINDOWS replace the above scripts in package.json with the following_
+_In WINDOWS replace the above script in package.json with the following_
     `"clean:reports": "mkdir cypress\\reports\\mochareports"`
-    `"pretest": "npm run clean:reports",`
-    `"tests": "npx cypress run --spec cypress/integration/tests/userStory_spec.js",`
-    `"merge:json-report": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",`
-    `"create:html-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",`
-    `"generate:html-report": "npm run merge:json-report && npm run create:html-report",`
-    `"cypress:tests": "npm run pretest && npm run tests && npm run generate:html-report"`
 
 _To RUN cypress tests with HTML reporter on WINDOWS_
     `if (Test-Path -Path ".\cypress\reports\") {Remove-Item -Path ".\cypress\reports\" -recurse }`

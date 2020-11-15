@@ -4,5 +4,3 @@ cypress/snapshots/**
 cypress/videos/**
 cypress/reports/**
 .eslintcache
-node_modules
-node_modules
