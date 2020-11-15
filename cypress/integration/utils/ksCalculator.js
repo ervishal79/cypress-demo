@@ -89,19 +89,19 @@ export const fillForm = data => {
         .type(data.annual_wages);
       if (data.ks_contribution === "3%") {
         getBody()
-          .find(".radio-control[value=3]")
+          .find(locators.ksContribution3percent)
           .click();
       } else if (data.ks_contribution === "4%") {
         getBody()
-          .find(locators.ksContribution3percent)
+          .find(locators.ksContribution4percent)
           .click();
       } else if (data.ks_contribution === "6%") {
         getBody()
-          .find(locators.ksContribution4percent)
+          .find(locators.ksContribution6percent)
           .click();
       } else if (data.ks_contribution === "8%") {
         getBody()
-          .find(locators.ksContribution6percent)
+          .find(locators.ksContribution8percent)
           .click();
       } else if (data.ks_contribution === "10%") {
         getBody()
