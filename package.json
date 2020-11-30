@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean:reports": "rm -rf cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
+    "clean:reports": "rm -rf cypress/reports; mkdir cypress/reports; mkdir cypress/reports/mochareports",
     "pretest": "npm run clean:reports",
     "tests": "npx cypress run --spec cypress/integration/tests/userStory_spec.js",
     "merge:json-report": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "create:html-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
     "generate:html-report": "npm run merge:json-report && npm run create:html-report",
-    "cypress:tests": "npm run pretest && npm run tests && npm run generate:html-report"
+    "cypress:tests": "npm run pretest; npm run tests; npm run generate:html-report"
   },
   "author": "Vish",
   "license": "ISC",

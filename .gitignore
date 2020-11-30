@@ -1,4 +1,4 @@
-/node_modules
+**/node_modules/*
 cypress/screenshots/**
 cypress/snapshots/**
 cypress/videos/**
